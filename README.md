@@ -16,7 +16,7 @@ Pipewire and wireplumber run in userspace and are stopped when you logout. So th
 sudo systemctl edit getty@tty1.service
 ```
 
-and insert (replacing the $USERNAME with your own):
+and insert (replacing $USERNAME with your own):
 
 ```
 [Service]
