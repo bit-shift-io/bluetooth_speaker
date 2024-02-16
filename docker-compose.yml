@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  bluetooth_speaker:
+    image: codingdave/bluetooth-speaker-alpine:latest
+    container_name: "bluetooth_speaker"
+    hostname: "bluetooth_speaker"
+    command: "--single-connection"
+    volumes:
+      - "/var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket"
+    restart: on-failure
