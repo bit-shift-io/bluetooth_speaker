@@ -4,7 +4,7 @@ Turn your bluetooth device into a receiver. Example: Connect your mobile (source
 This project uses https://github.com/fdanis-oss/pw_wp_bluetooth_rpi_speaker and turns it into a docker image.
 
 ## How does it work
-When the container is run it binds ´/var/run/dbus/system_bus_socket´ and thus allows the container to act upon it. The script speaker-agent.py is run (with optional --single-connection parameter) and starts to do its service in isolation. When you do not need this service any longer just stop the container.
+When the container is run it binds `/var/run/dbus/system_bus_socket` and thus allows the container to act upon it. The script speaker-agent.py is run (with optional --single-connection parameter) and starts to do its service in isolation. When you do not need this service any longer just stop the container.
 
 ## Dependencies
 This container requires the host to run pipewire and wireplumber.
