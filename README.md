@@ -10,13 +10,13 @@ When the container is run it binds `/var/run/dbus/system_bus_socket` and thus al
 This container requires the host to run pipewire and wireplumber.
 
 ## Persistently running
-Pipewire and wireplumber run in userspace and are stopped when you logout. So the user needs to stay logged in and it is not suficient to keep a process open (screen, tmux, byobu, ...). If you want to run this service headless persistently you could enable auto login:
+Pipewire and wireplumber run in userspace and are stopped when you logout. So the user needs to stay logged in and it is not just suficient to keep a process open (screen, tmux, byobu, ...). If you want to run this service headless persistently you could enable auto login:
 
 ```
 sudo systemctl edit getty@tty1.service
 ```
 
-and insert (by replacing the $USERNAME) with your own:
+and insert (replacing the $USERNAME with your own):
 
 ```
 [Service]
