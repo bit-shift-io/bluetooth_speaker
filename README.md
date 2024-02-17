@@ -10,7 +10,9 @@ When the container is run it binds `/var/run/dbus/system_bus_socket` and thus al
 This container requires the host to run pipewire and wireplumber.
 
 ## Persistently running
-Pipewire and wireplumber run in userspace and are stopped when you logout. So the user needs to stay logged in and it is not just suficient to keep a process open (screen, tmux, byobu, ...). If you want to run this service headless persistently you could enable auto login:
+Pipewire and wireplumber run in userspace and are stopped when you logout. So the user needs to stay logged in and it is not just suficient to keep a process open (screen, tmux, byobu, ...). If you want to run this service headless persistently you could enable auto login.
+
+### Manually
 
 ```
 sudo systemctl edit getty@tty1.service
@@ -24,3 +26,9 @@ ExecStart=
 ExecStart=-/sbin/agetty --noissue --autologin $USERNAME %I $TERM
 Type=idle
 ```
+
+### When running RaspbianOS
+Start `raspi-config` utility and navigate:
+- *1 System Options*
+  - *S5 Boot / Auto Login*
+    - *B2 Console Autologin*
