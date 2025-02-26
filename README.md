@@ -35,3 +35,35 @@ Start `raspi-config` utility and navigate:
 - *1 System Options*
   - *S5 Boot / Auto Login*
     - *B2 Console Autologin*
+
+## docker compose
+Create a websync folder with empty wsdata.json file if you want to store a copy of your data.
+```
+services:
+  bluetooth_speaker:
+    image: gibbz/bluetooth-speaker:latest
+    container_name: "bluetooth-speaker"
+    hostname: "bluetooth_speaker"
+    command: "--single-connection" # optional
+    volumes:
+      - "/var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket"
+    restart: unless-stopped
+```
+
+## dockerfile build notes
+
+### To build from Dockerfile
+```docker build -t gibbz/bluetooth_speaker .```
+
+### Open an image for browsing
+```docker run -i -t gibbz/bluetooth_speaker /bin/sh```
+
+### Connect to a container
+```docker container exec -it debug /bin/sh```
+
+### Tag for dockerhub
+This will be tagged when the above build is done also.
+```docker tag bluetooth_speaker:latest gibbz/bluetooth_speaker:latest```
+
+### Push to dockerhub
+```docker push gibbz/bluetooth_speaker:latest```
