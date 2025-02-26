@@ -53,17 +53,17 @@ services:
 ## dockerfile build notes
 
 ### To build from Dockerfile
-```docker build -t gibbz/bluetooth_speaker .```
+```docker build -t gibbz/bluetooth-speaker .```
 
 ### Open an image for browsing
-```docker run -i -t gibbz/bluetooth_speaker /bin/sh```
+```docker run -i -t gibbz/bluetooth-speaker /bin/sh```
 
 ### Connect to a container
 ```docker container exec -it debug /bin/sh```
 
 ### Tag for dockerhub
 This will be tagged when the above build is done also.
-```docker tag bluetooth_speaker:latest gibbz/bluetooth_speaker:latest```
+```docker tag bluetooth-speaker:latest gibbz/bluetooth-speaker:latest```
 
 ### Push to dockerhub
-```docker push gibbz/bluetooth_speaker:latest```
+```docker push gibbz/bluetooth-speaker:latest```
