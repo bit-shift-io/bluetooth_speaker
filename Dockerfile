@@ -1,7 +1,5 @@
 FROM alpine:latest
 
-MAINTAINER David-Tillmann Schaefer "codingdave@gmail.com"
-
 COPY speaker-agent.py /opt/speaker-agent/speaker-agent.py
 
 RUN apk add \

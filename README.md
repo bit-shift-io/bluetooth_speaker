@@ -1,4 +1,7 @@
 # Bluetooth Speaker with Pipewire
+
+Forked from: https://github.com/codingdave/bluetooth_speaker and modified to allow any bluetooth device to connect.
+
 Turn your bluetooth device into a receiver. Example: Connect your mobile (source, no audio jack) to your HiFi (audio jack, no bluetooth) using a raspberryPi inbetween, as it has both: bluetooth and an audio jack. 
 
 This project uses https://github.com/fdanis-oss/pw_wp_bluetooth_rpi_speaker and turns it into a docker image.

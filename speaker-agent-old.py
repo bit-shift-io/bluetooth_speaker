@@ -58,14 +58,12 @@ class Agent(dbus.service.Object):
     def set_exit_on_release(self, exit_on_release):
         self.exit_on_release = exit_on_release
 
-
     @dbus.service.method(AGENT_INTERFACE,
                          in_signature="", out_signature="")
     def Release(self):
         print("Release")
         if self.exit_on_release:
             mainloop.quit()
-
 
     @dbus.service.method(AGENT_INTERFACE,
                          in_signature="os", out_signature="")
@@ -74,19 +72,13 @@ class Agent(dbus.service.Object):
             print("%s try to connect while %s already connected" % (device, self.remote_device))
             raise Rejected("Connection rejected by user")
 
-        # always auth device
-        print("Auto authorize (%s, %s)" % (device, uuid))
-        return
-        '''
         # Always authorize A2DP and AVRCP connection
         if uuid in [A2DP, AVRCP]:
-            print("Authorize Service (%s, %s)" % (device, uuid))
+            print("AuthorizeService (%s, %s)" % (device, uuid))
             return
         else:
             print("Service rejected (%s, %s)" % (device, uuid))
-        '''
         raise Rejected("Connection rejected by user")
-
 
     @dbus.service.method(AGENT_INTERFACE,
                          in_signature="", out_signature="")
@@ -100,15 +92,12 @@ def start_speaker_agent():
     # Set it as always discoverable
     adapter = dbus.Interface(bus.get_object(BUS_NAME, "/org/bluez/hci0"),
                              "org.freedesktop.DBus.Properties")
-    adapter.Set("org.bluez.Adapter1", "Powered", True)                    
     adapter.Set("org.bluez.Adapter1", "DiscoverableTimeout", dbus.UInt32(0))
     adapter.Set("org.bluez.Adapter1", "Discoverable", True)
-    adapter.Set("org.bluez.Adapter1", "PairableTimeout", dbus.UInt32(0))
-    adapter.Set("org.bluez.Adapter1", "Pairable", True)
 
-    print("Bluetooth speaker discoverable")
+    print("RPi speaker discoverable")
 
-    # As the bluetooth speaker will not have any interface, create a pairing
+    # As the RPi speaker will not have any interface, create a pairing
     # agent with NoInputNoOutput capability
     obj = bus.get_object(BUS_NAME, "/org/bluez")
     manager = dbus.Interface(obj, "org.bluez.AgentManager1")
